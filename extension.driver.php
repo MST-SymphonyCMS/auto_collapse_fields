@@ -11,8 +11,8 @@
 		public function about() {
 			return array(
 				'name'			=> 'Auto Colapse Fields',
-				'version'		=> '1.0',
-				'release-date'	=> '2011-04-27',
+				'version'		=> '1.1',
+				'release-date'	=> '2011-06-16',
 				'author'		=> array(
 					'name'			=> 'Solutions Nitriques',
 					'website'		=> 'http://www.nitriques.com/',
@@ -45,7 +45,14 @@
 					'script',
 					"(function($){
 						$(function(){
-							$('#fields-duplicator .controls > .collapser:first').trigger('click.duplicator');
+							// collapse all fields, only if no errors
+							if ($('#fields-duplicator .invalid').length < 1) {
+								$('#fields-duplicator .controls > .collapser:first').trigger('click.duplicator');
+							}
+							
+							// expand fields that are in error
+							// does not work
+							//$('#fields-duplicator .invalid').closest('li').find('.header>span').trigger('mousedown');
 						});
 					})(jQuery);"
 				), time()+1
